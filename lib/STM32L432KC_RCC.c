@@ -49,4 +49,15 @@ void configureClock(){
     // Select PLL as clock source
     RCC->CFGR |= (0b11 << 0);
     while(!((RCC->CFGR >> 2) & 0b11));
+
+    // Configure clk for TIM6/7
+    //(pg 198) set to MCO to divide 
+    //RCC->CFGR |= (1<<25); //When MCOSEL[3:0] = 0010 then MSI clock selected (pg 198)
+    // ^ alr done in configurePLL()?
+
+    //clock source control
+
+    //(pg 222)
+    RCC->APB1ENR1 |= (1<<4);
+    RCC->APB1ENR1 |= (1<<5);
 }

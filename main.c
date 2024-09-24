@@ -50,11 +50,22 @@ int main(void) {
     // Configure flash to add waitstates to avoid timing errors
     configureFlash();
 
-    // Setup the PLL and switch clock source to the PLL
+    // CONFIGURE CLOCKS IN RCC: (do we still have to Setup the PLL and switch clock source to the PLL)
     configureClock();
-
+ 
     // Turn on clock to GPIOB
     RCC->AHB2ENR |= (1 << 1);
+
+    //SELECT CORRECT CLK SRC IN TIM CONTROL
+    initTIM(TIM16);
+    initTIM(TIM17);
+
+    //CONFIGURE COUNTER
+
+
+    //PRESCALE REGISTER, AUTOLOAD-REGISTER, ENABLE COUNTER
+
+
 
    //Set LED_PIN as output
     pinMode(LED_PIN, GPIO_OUTPUT);
@@ -69,7 +80,9 @@ int main(void) {
 
   // set up peripherals
       //clk
-      //timer
+      //timer - use tm2/3 - registers are the similair
+        // 1 timer for pwm, 1 timer for note duration
+
         // three all purpose times: TIM2, TIM15, TIM16
       //pwm
 
