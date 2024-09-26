@@ -60,12 +60,7 @@ int main(void) {
     initTIM(TIM16);
     initTIM(TIM17);
 
-    //CONFIGURE COUNTER
-
-
-    //PRESCALE REGISTER, AUTOLOAD-REGISTER, ENABLE COUNTER
-
-
+   
 
    //Set LED_PIN as output
     pinMode(LED_PIN, GPIO_OUTPUT);

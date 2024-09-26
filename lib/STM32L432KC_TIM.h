@@ -11,8 +11,8 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 // Base addresses
-#define RCC_TIM16 (0x40001000UL) // base address of TIM6
-#define RCC_TIM17 (0x40001400UL) // base address of TIM7
+#define RCC_TIM16 (0x40014400UL) // base address of TIM16 (pg. 69)
+#define RCC_TIM15 (0x40014000UL) // base address of TIM15
 
 ///////////////////////////////////////////////////////////////////////////////
 // Bitfield struct for TIM
@@ -48,8 +48,8 @@ typedef struct { //pg 967
 } TIM; 
 
 // Pointers to GPIO-sized chunks of memory for each peripheral
-#define TIM6 ((TIM_TypeDef *) TIM_BASE6)
-#define TIM7 ((TIM_TypeDef *) TIM_BASE7)
+#define TIM16 ((TIM_TypeDef *) TIM_BASE16)
+#define TIM15 ((TIM_TypeDef *) TIM_BASE15)
 
 ///////////////////////////////////////////////////////////////////////////////
 // Function prototypes

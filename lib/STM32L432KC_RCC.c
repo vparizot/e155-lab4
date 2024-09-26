@@ -56,8 +56,18 @@ void configureClock(){
     // ^ alr done in configurePLL()?
 
     //clock source control
+    RCC->CFGR |= (1<<10); //bits 10:8 (PPRE1) where 0xx is HCLK not divided
+    RCC->CFGR |= (1<<7) ; // AHB Prescaler, (HPRE[3:0] = 0xxx)
 
-    //(pg 222)
-    RCC->APB1ENR1 |= (1<<4);
-    RCC->APB1ENR1 |= (1<<5);
+    // disable slave mode (pg927), SMCR
+    // SMCR |= (1<< (pg 927)
+
+    //enable timer (pg 245)
+    RCC->APB2ENR |= (1<<16); //enable timer 15
+    RCC->APB2ENR |= (1<<17); //enable timer 16
+
+    //turn on MSI timer 
+
+
+
 }
