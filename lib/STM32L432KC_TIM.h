@@ -11,8 +11,8 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 // Base addresses
-#define RCC_TIM16 (0x40014400UL) // base address of TIM16 (pg. 69)
-#define RCC_TIM15 (0x40014000UL) // base address of TIM15
+#define TIM_BASE16 (0x40014400UL) // base address of TIM16 (pg. 69)
+#define TIM_BASE15 (0x40014000UL) // base address of TIM15
 
 ///////////////////////////////////////////////////////////////////////////////
 // Bitfield struct for TIM
@@ -20,7 +20,7 @@
 // TIM register structs here
 typedef struct { //pg 967
     volatile uint32_t CR1;      // memory offset 0x00
-    volatile uint32_t CR1;      // memory offset 0x04
+    volatile uint32_t CR2;      // memory offset 0x04
     volatile uint32_t FILL1;     // memory offset 0x08
     volatile uint32_t DIER;      // memory offset 0x0C
     volatile uint32_t SR;      // memory offset 0x10
@@ -45,7 +45,7 @@ typedef struct { //pg 967
     volatile uint32_t FILL8;      // memory offset 0x5C
     volatile uint32_t OR2;      // memory offset 0x60
 
-} TIM; 
+} TIM_TypeDef; 
 
 // Pointers to GPIO-sized chunks of memory for each peripheral
 #define TIM16 ((TIM_TypeDef *) TIM_BASE16)
@@ -55,7 +55,10 @@ typedef struct { //pg 967
 // Function prototypes
 ///////////////////////////////////////////////////////////////////////////////
 
-void initTIM(TIM_TypeDef * TIMx);
+void initTIMpwm(TIM_TypeDef * TIMx);
+void initTIMdelay(TIM_TypeDef * TIMx);
+
 void delay_millis(TIM_TypeDef * TIMx, uint32_t ms);
+void pitch(TIM_TypeDef * TIMx, uint32_t pitch);
 
 #endif

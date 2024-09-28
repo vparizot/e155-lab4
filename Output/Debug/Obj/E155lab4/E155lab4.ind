@@ -2,6 +2,7 @@
 "Output/Debug/Obj/E155lab4/STM32L432KC_FLASH.o"
 "Output/Debug/Obj/E155lab4/STM32L432KC_GPIO.o"
 "Output/Debug/Obj/E155lab4/STM32L432KC_RCC.o"
+"Output/Debug/Obj/E155lab4/STM32L432KC_TIM.o"
 "Output/Debug/Obj/E155lab4/main.o"
 "Output/Debug/Obj/E155lab4/SEGGER_THUMB_Startup.o"
 "Output/Debug/Obj/E155lab4/STM32L4xx_Startup.o"

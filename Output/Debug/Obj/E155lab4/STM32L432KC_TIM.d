@@ -7,4 +7,5 @@ Output/Debug/Obj/E155lab4/STM32L432KC_TIM.o: \
  C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 6.34/include/__SEGGER_RTL.h \
  C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 6.34/include/__SEGGER_RTL_ConfDefaults.h \
  C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 6.34/include/__SEGGER_RTL_Conf.h \
- C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 6.34/include/__SEGGER_RTL_Arm_Conf.h
+ C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 6.34/include/__SEGGER_RTL_Arm_Conf.h \
+ C:\Users\vparizot\E155\lab4_mvp\lib\STM32L432KC_GPIO.h
