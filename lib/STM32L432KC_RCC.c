@@ -21,15 +21,15 @@ void configurePLL() {
     RCC->PLLCFGR |= (1 << 0);
     RCC->PLLCFGR &= ~(1 << 1);
 
-    // Set PLLN
+    // Set PLLN to N = 8
     RCC->PLLCFGR &= ~(0b11111111 << 8); // Clear all bits of PLLN
-    RCC->PLLCFGR |= (0b1010000 << 8); // |= 80
+    RCC->PLLCFGR |= (0b0001000 << 8); // |= 0
     
-    // Set PLLM
-    RCC->PLLCFGR &= ~(0b111 << 4);  // Clear all bits
+    // Set PLLM = 1
+    RCC->PLLCFGR &= (0b000 << 4);  // Clear all bits
     
-    // Set PLLR
-    RCC->PLLCFGR &= ~(1 << 26);
+    // Set PLLR = 2
+    RCC->PLLCFGR |= (1 << 26);
     RCC->PLLCFGR |= (1 << 25);
     
     // Enable PLLR output
@@ -40,6 +40,8 @@ void configurePLL() {
     
     // Wait until PLL is locked
     while ((RCC->CR >> 25 & 1) != 1);
+
+    //configures a 16 MHz CLOCK!!
 }
 
 void configureClock(){
@@ -65,6 +67,9 @@ void configureClock(){
     //enable timer (pg 245)
     RCC->APB2ENR |= (1<<16); //enable timer 15
     RCC->APB2ENR |= (1<<17); //enable timer 16
+
+    //SYSCFGEN
+    RCC->APB2ENR |= (1<<0);
 
  
 

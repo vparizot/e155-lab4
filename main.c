@@ -167,55 +167,28 @@ int main(void) {
     configureClock();
  
     // Turn on clock to GPIOB
-    RCC->AHB2ENR |= (1 << 1);
-
-    
+    //RCC->AHB2ENR |= (1 << 1);
 
     //SELECT CORRECT CLK SRC IN TIM CONTROL
     initTIMpwm(TIM16);
     initTIMdelay(TIM15);
 
    // size of array
-   int size = sizeof(notes)/sizeof(notes[0]);
+   //int size = sizeof(notes)/sizeof(notes[0]);
    
    // cycle thru entry
-   for (int i = 0; i < size; i++) {
+   while(1) {
+    int i = 0;
+    while (notes[i][1] !=0){
       pitch(TIM16, notes[i][0]);
       ms_delay(notes[i][1]);
       //delay_millis(TIM15, notes[i][1]);
+      i++;
+
+
       // exit loop at duration = 0
-      if (notes[i][1] == 0) {
-        break;
-      }
+     }
    }
-
-
-
-
-
-   //Set LED_PIN as output
-    //pinMode(LED_PIN, GPIO_OUTPUT);
-
-    // Blink LED
-    //while(1) {
-    //    ms_delay(DELAY_DURATION_MS);
-   //     togglePin(LED_PIN);
-    //}
-    //return 0; 
-    
-
-  // set up peripherals
-      //clk
-      //timer - use tm2/3 - registers are the similair
-        // 1 timer for pwm, 1 timer for note duration
-
-        // three all purpose times: TIM2, TIM15, TIM16
-      //pwm
-
-    // call while loop
-    // go thru each pitch and duration
-
-
 }
 
 /*************************** End of file ****************************/
