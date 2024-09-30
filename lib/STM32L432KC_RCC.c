@@ -68,6 +68,9 @@ void configureClock(){
     RCC->APB2ENR |= (1<<16); //enable timer 15
     RCC->APB2ENR |= (1<<17); //enable timer 16
 
+    //RCC->CFGR |= (0b1 << 13);
+    //RCC->CFGR |= (0b1 << 7);
+
     //SYSCFGEN
     RCC->APB2ENR |= (1<<0);
 

@@ -166,28 +166,34 @@ int main(void) {
     // CONFIGURE CLOCKS IN RCC: (do we still have to Setup the PLL and switch clock source to the PLL)
     configureClock();
  
-    // Turn on clock to GPIOB
-    //RCC->AHB2ENR |= (1 << 1);
+  
+    // Turn on clock to GPIOA
+    RCC->AHB2ENR |= (1 << 0);
 
     //SELECT CORRECT CLK SRC IN TIM CONTROL
     initTIMpwm(TIM16);
     initTIMdelay(TIM15);
 
+    // set output pin as an alternate function (TIM16 has PA6)
+    pinMode(6, GPIO_ALT);     // set up alternate function
+    GPIO->AFRL &= ~(0b1111 <<24);                                  
+    GPIO->AFRL |= (0b1110 << 24);    //Set AF14 to be output
+
+
+    // datasheet pg. 57
    // size of array
-   //int size = sizeof(notes)/sizeof(notes[0]);
+   // int size = sizeof(notes)/sizeof(notes[0]);
    
    // cycle thru entry
    while(1) {
-    int i = 0;
-    while (notes[i][1] !=0){
-      pitch(TIM16, notes[i][0]);
-      ms_delay(notes[i][1]);
-      //delay_millis(TIM15, notes[i][1]);
-      i++;
-
-
-      // exit loop at duration = 0
-     }
+    //int i = 0;
+    //while (notes[i][1] != 0){
+    //  pitch(TIM16, notes[i][0]);
+    //  ms_delay(notes[i][1]);
+    //  //delay_millis(TIM15, notes[i][1]);
+    //  i++;
+    //  // exit loop at duration = 0
+    // }
    }
 }
 
