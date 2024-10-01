@@ -158,6 +158,127 @@ const int notes[][2] = {
 {440,	500},
 {  0,	0}};
 
+//const int G5 =784 ;
+//const int A5 = 880;
+//const int A = 440;
+//const int Gm = 391.995;
+//const int Am = 440;
+//const int Q = 125;
+//const int bpm = 300;
+
+//const int disc[][2] = {
+//{0, Q},
+//{G5, bpm},
+//{A5,bpm },
+//{0, Q},
+//{G5,bpm },
+//{A, bpm},
+//{0, Q},
+//{G5, bpm},
+//{0, Q},
+//{G5, bpm},
+//{0, Q},
+//{G5, bpm},
+//{A5, bpm},
+//{0, Q},
+//{G5, bpm},
+//{0, Q},
+//{G5, bpm},
+//{0, Q},
+//{G5, bpm},
+//{A5,bpm },
+//{0, Q},
+//{G5, bpm},
+//{0, Q},
+//{A5, bpm},
+//{0, Q},
+//{G5, bpm},
+//{A5, bpm},
+//{0, Q},
+//{G5, bpm},
+//{A5, bpm},
+//{Am, bpm},
+//{Gm, bpm},
+//{Am, bpm},
+//{Gm, bpm},
+//{Am, bpm},
+//{Gm, bpm},
+//{Am, bpm},
+//{Gm, bpm},
+//{Am, bpm},
+//{Gm, bpm},
+//{Am, bpm},
+//{Gm, bpm},
+//{Am, bpm},
+//{Gm, bpm},
+//{Am, bpm},
+//{Gm, bpm},
+//{Am, bpm},
+//{Gm, bpm},
+//{Am, bpm},
+//{Gm, bpm},
+//{Am, bpm},
+//{G5, bpm},
+//{Am, bpm},
+//{G5, bpm},
+//{Am, bpm},
+//{0, Q},
+//{Gm, bpm},
+//{Am, bpm},
+//{Gm, bpm},
+//{Am, bpm},
+//{Gm, bpm},
+//{Am, bpm},
+//{Gm, bpm},
+//{Am, bpm},
+//{G5, bpm},
+//{A5, bpm},
+//{0, Q},
+//{A5, bpm},
+//{0, Q}};
+
+
+//const int Cm = 261.6;
+//const int Gs = 415.3;
+//const int F = 349.2;
+//const int bpm = 822;
+//const int Gm = 392;
+
+
+const int Cm[][2] = {{261.6, 500}, {311, 500}, {392, 500}};
+const int Gs[][2] = {{415, 500}, {493, 500}, {622, 500}};
+const int F[][2] = {{392, 500}, {440, 500}, {523, 500}};
+const int Gm[][2] = {{392, 500}, {466, 500}, {587, 500}};
+
+const int bottomsup[][2] = {
+{261.6, 500}, {311, 500}, {392, 500}, //Cm, 
+{415, 500}, {493, 500}, {622, 500}, //Gs, 
+{392, 500}, {440, 500}, {523, 500}, //F, 
+{392, 500}, {466, 500}, {587, 500}, //Gm, 
+{261.6, 500}, {311, 500}, {392, 500}, //Cm, 
+{261.6, 500}, {311, 500}, {392, 500}, //Cm,
+{415, 500}, {493, 500}, {622, 500}, //Gs,
+{392, 500}, {440, 500}, {523, 500}, //F,
+{392, 500}, {466, 500}, {587, 500}, //Gm,
+{261.6, 500}, {311, 500}, {392, 500}};//Cm};
+
+
+//{Cm, bpm},
+//{Gs, bpm},
+//{F, bpm},
+//{Gm, bpm},
+//{Cm, bpm},
+//{Cm, bpm},
+//{Gs, bpm},
+//{F, bpm},
+//{Gm, bpm},
+//{Cm, bpm},
+//{Cm, bpm},
+//{Gs, bpm},
+//{F, bpm},
+//{Gm, bpm},
+//{Cm, bpm}};
+
 int main(void) {
 
     // Configure flash to add waitstates to avoid timing errors
@@ -166,6 +287,21 @@ int main(void) {
     // CONFIGURE CLOCKS IN RCC: (do we still have to Setup the PLL and switch clock source to the PLL)
     configureClock();
  
+/////////////////////////
+    //clock source control
+    RCC->CFGR |= (1<<10); //bits 10:8 (PPRE1) where 0xx is HCLK not divided
+    RCC->CFGR |= (1<<7) ; // AHB Prescaler, (HPRE[3:0] = 0xxx)
+
+    //enable timer (pg 245)
+    RCC->APB2ENR |= (1<<16); //enable timer 15
+    RCC->APB2ENR |= (1<<17); //enable timer 16
+
+    //RCC->CFGR |= (0b1 << 13);
+    //RCC->CFGR |= (0b1 << 7);
+
+    //SYSCFGEN
+    //RCC->APB2ENR |= (1<<0);
+////////////////////////////////
   
     // Turn on clock to GPIOA
     RCC->AHB2ENR |= (1 << 0);
@@ -178,22 +314,17 @@ int main(void) {
     pinMode(6, GPIO_ALT);     // set up alternate function
     GPIO->AFRL &= ~(0b1111 <<24);                                  
     GPIO->AFRL |= (0b1110 << 24);    //Set AF14 to be output
-
-
     // datasheet pg. 57
-   // size of array
-   // int size = sizeof(notes)/sizeof(notes[0]);
-   
+  
    // cycle thru entry
    while(1) {
-    //int i = 0;
-    //while (notes[i][1] != 0){
-    //  pitch(TIM16, notes[i][0]);
-    //  ms_delay(notes[i][1]);
-    //  //delay_millis(TIM15, notes[i][1]);
-    //  i++;
-    //  // exit loop at duration = 0
-    // }
+    int i = 0;
+    while (bottomsup[i][1] != 0){ // exit loop at duration = 0
+      pitch(TIM16, bottomsup[i][0]);
+      delay_millis(TIM15, bottomsup[i][1]);
+      i++;
+ 
+     }
    }
 }
 

@@ -26,11 +26,11 @@ void configurePLL() {
     RCC->PLLCFGR |= (0b0001000 << 8); // |= 0
     
     // Set PLLM = 1
-    RCC->PLLCFGR &= (0b000 << 4);  // Clear all bits
+    RCC->PLLCFGR &= ~(0b111 << 4);  // Clear all bits
     
     // Set PLLR = 2
-    RCC->PLLCFGR |= (1 << 26);
-    RCC->PLLCFGR |= (1 << 25);
+    RCC->PLLCFGR &= ~(1<<26);// |= (1 << 26);
+    RCC->PLLCFGR |= (1<<25);//(1 << 25);
     
     // Enable PLLR output
     RCC->PLLCFGR |= (1 << 24);
@@ -51,31 +51,5 @@ void configureClock(){
     // Select PLL as clock source
     RCC->CFGR |= (0b11 << 0);
     while(!((RCC->CFGR >> 2) & 0b11));
-
-    // Configure clk for TIM6/7
-    //(pg 198) set to MCO to divide 
-    //RCC->CFGR |= (1<<25); //When MCOSEL[3:0] = 0010 then MSI clock selected (pg 198)
-    // ^ alr done in configurePLL()?
-
-    //clock source control
-    RCC->CFGR |= (1<<10); //bits 10:8 (PPRE1) where 0xx is HCLK not divided
-    RCC->CFGR |= (1<<7) ; // AHB Prescaler, (HPRE[3:0] = 0xxx)
-
-    // disable slave mode (pg927), SMCR
-    // SMCR |= (1<< (pg 927)
-
-    //enable timer (pg 245)
-    RCC->APB2ENR |= (1<<16); //enable timer 15
-    RCC->APB2ENR |= (1<<17); //enable timer 16
-
-    //RCC->CFGR |= (0b1 << 13);
-    //RCC->CFGR |= (0b1 << 7);
-
-    //SYSCFGEN
-    RCC->APB2ENR |= (1<<0);
-
- 
-
-
 
 }

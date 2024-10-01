@@ -89,6 +89,6 @@ void initTIMpwm(TIM_TypeDef16 * TIMx);
 void initTIMdelay(TIM_TypeDef15 * TIMx);
 
 void delay_millis(TIM_TypeDef15 * TIMx, uint32_t ms);
-void pitch(TIM_TypeDef16 * TIMx, uint32_t pitch);
+void pitch(TIM_TypeDef16 * TIMx, uint32_t hz);
 
 #endif
