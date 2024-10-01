@@ -46,7 +46,155 @@ void ms_delay(int ms) {
    }
 }
 
+//3
+const int B = 246; //b3
+
+//4
+const int Fs = 370; //f4s
+const int D = 293;
+const int E = 329;
+const int A = 440; 
+const int q = 200;
+const int h = 400;
+const int B1 = 493; //4
+//5
+const int D1 = 587;
+const int A1 = 880;
+const int Cs = 554;
+const int G1 = 784;
+const int Fs1 = 740;
+const int third =300 ;
+const int G = 392; //4
+const int Cs1 = 554;
+
+
 // Pitch in Hz, duration in ms
+const int halway [][2] = {
+{B, q}, //3
+{B, q }, //3
+{Fs,q }, //4
+{Fs,q },//4
+{E,q },//4
+{D,q },//4
+{D,q },//4
+{B,h },//4
+{0, q },//4
+{E, q},//4
+{Fs, q },//4
+{E, q },//4
+{D, q },//4
+{D, q },//4
+{B, q },//3
+{D, q },//4
+{D, q },//4
+{E, q },//4
+{Fs, q },//4
+{E, q },//4
+{D, q },//4//4
+{D, q },//4
+{B, q },//3
+{B, q },//3
+{0, h},
+{0, q},
+{Fs, q},//4
+{E,q},//4
+
+{E ,q},//4
+{0 ,q},
+{0 ,q},
+{0 ,q},
+{E ,q},//4
+{Fs ,q},//4
+{E ,q},//4
+{D ,h},//4
+{D ,h},//4
+{B ,h},//3
+{B ,h},//3
+{B ,q},//3
+{0 ,q},//3
+{0 ,q},
+{A ,q}, //4
+{Fs ,q},//4
+{A ,q},//4
+{E ,q},//4
+{Fs ,h},//4
+{Fs ,h},//4
+{0 ,h},
+{0 ,h},
+{E ,q},//4
+{D ,q},//4
+{E ,h},//4
+{E ,q},//4
+{D ,q},//4
+{E ,q},//4
+{D ,h},//4
+{D ,q},//4
+{E ,q},//4
+{Fs ,q},//4
+{E ,q},//4
+{D ,h},//4
+{D ,q},//4
+{D,h}, //4
+{B ,h}, //3
+{B, h}, //3
+{0 ,q},
+
+{Cs ,q}, //5
+{D1 ,q}, //5
+{B1 ,h}, //6
+{B1 ,h}, //6
+{B1, h}, //6
+{A1 ,h},//5
+{A1 ,h},//5
+{A1, h}, //5
+{Cs ,q},//5
+{D1 , q},//5
+{A1 ,h}, //5
+{A1 ,h}, //5
+{A1 ,h}, //5
+
+{G1 ,q}, //5
+{Fs1 ,q}, //5
+{A ,third},//4
+{G ,third}, //4
+{Fs ,h}, //4
+{E ,h}, //4
+{D ,q}, //4
+{E ,h}, //4
+{Fs ,third}, //4
+{Fs ,h}, //4
+{ Fs,q}, //4
+{E ,h}, //4
+{E, h}, //4
+{0, h},
+{Cs1 ,q}, //5
+{D1 ,q}, //5
+{B1 ,h}, //6
+{B1 ,h}, //6
+{B1, q}, //6
+{A1 ,h}, //5
+{A1, h}, //5
+{A1 ,q},
+{Cs1 ,q}, //5
+{D1 ,q}, //5
+{A1 ,h}, //5
+{A1 ,h}, //5
+{A ,h}, //4
+{A ,h}, //4
+{A ,h}, //4
+{A ,h}, //4
+
+{G, third}, //4
+{Fs , third}, //4
+{Fs , h}, //4
+{E , h}, //4
+{D , h}, //4
+{D , h}, //4
+{E , q}, //4
+{Fs , h},
+{Fs,q}};
+
+
 const int notes[][2] = {
 {659,	125},
 {623,	125},
@@ -158,126 +306,8 @@ const int notes[][2] = {
 {440,	500},
 {  0,	0}};
 
-//const int G5 =784 ;
-//const int A5 = 880;
-//const int A = 440;
-//const int Gm = 391.995;
-//const int Am = 440;
-//const int Q = 125;
-//const int bpm = 300;
-
-//const int disc[][2] = {
-//{0, Q},
-//{G5, bpm},
-//{A5,bpm },
-//{0, Q},
-//{G5,bpm },
-//{A, bpm},
-//{0, Q},
-//{G5, bpm},
-//{0, Q},
-//{G5, bpm},
-//{0, Q},
-//{G5, bpm},
-//{A5, bpm},
-//{0, Q},
-//{G5, bpm},
-//{0, Q},
-//{G5, bpm},
-//{0, Q},
-//{G5, bpm},
-//{A5,bpm },
-//{0, Q},
-//{G5, bpm},
-//{0, Q},
-//{A5, bpm},
-//{0, Q},
-//{G5, bpm},
-//{A5, bpm},
-//{0, Q},
-//{G5, bpm},
-//{A5, bpm},
-//{Am, bpm},
-//{Gm, bpm},
-//{Am, bpm},
-//{Gm, bpm},
-//{Am, bpm},
-//{Gm, bpm},
-//{Am, bpm},
-//{Gm, bpm},
-//{Am, bpm},
-//{Gm, bpm},
-//{Am, bpm},
-//{Gm, bpm},
-//{Am, bpm},
-//{Gm, bpm},
-//{Am, bpm},
-//{Gm, bpm},
-//{Am, bpm},
-//{Gm, bpm},
-//{Am, bpm},
-//{Gm, bpm},
-//{Am, bpm},
-//{G5, bpm},
-//{Am, bpm},
-//{G5, bpm},
-//{Am, bpm},
-//{0, Q},
-//{Gm, bpm},
-//{Am, bpm},
-//{Gm, bpm},
-//{Am, bpm},
-//{Gm, bpm},
-//{Am, bpm},
-//{Gm, bpm},
-//{Am, bpm},
-//{G5, bpm},
-//{A5, bpm},
-//{0, Q},
-//{A5, bpm},
-//{0, Q}};
 
 
-//const int Cm = 261.6;
-//const int Gs = 415.3;
-//const int F = 349.2;
-//const int bpm = 822;
-//const int Gm = 392;
-
-
-const int Cm[][2] = {{261.6, 500}, {311, 500}, {392, 500}};
-const int Gs[][2] = {{415, 500}, {493, 500}, {622, 500}};
-const int F[][2] = {{392, 500}, {440, 500}, {523, 500}};
-const int Gm[][2] = {{392, 500}, {466, 500}, {587, 500}};
-
-const int bottomsup[][2] = {
-{261.6, 500}, {311, 500}, {392, 500}, //Cm, 
-{415, 500}, {493, 500}, {622, 500}, //Gs, 
-{392, 500}, {440, 500}, {523, 500}, //F, 
-{392, 500}, {466, 500}, {587, 500}, //Gm, 
-{261.6, 500}, {311, 500}, {392, 500}, //Cm, 
-{261.6, 500}, {311, 500}, {392, 500}, //Cm,
-{415, 500}, {493, 500}, {622, 500}, //Gs,
-{392, 500}, {440, 500}, {523, 500}, //F,
-{392, 500}, {466, 500}, {587, 500}, //Gm,
-{261.6, 500}, {311, 500}, {392, 500}};//Cm};
-
-
-//{Cm, bpm},
-//{Gs, bpm},
-//{F, bpm},
-//{Gm, bpm},
-//{Cm, bpm},
-//{Cm, bpm},
-//{Gs, bpm},
-//{F, bpm},
-//{Gm, bpm},
-//{Cm, bpm},
-//{Cm, bpm},
-//{Gs, bpm},
-//{F, bpm},
-//{Gm, bpm},
-//{Cm, bpm}};
 
 int main(void) {
 
@@ -319,9 +349,9 @@ int main(void) {
    // cycle thru entry
    while(1) {
     int i = 0;
-    while (bottomsup[i][1] != 0){ // exit loop at duration = 0
-      pitch(TIM16, bottomsup[i][0]);
-      delay_millis(TIM15, bottomsup[i][1]);
+    while (notes[i][1] != 0){ // exit loop at duration = 0
+      pitch(TIM16, notes[i][0]);
+      delay_millis(TIM15, notes[i][1]);
       i++;
  
      }
