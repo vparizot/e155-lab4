@@ -1,6 +1,8 @@
 // STM32L432KC_TIM.c
 // Source code for TIM functions
-
+// E155 Lab4
+// Victoria Parizot
+// vparizot@g.hmc.edu
 #include "STM32L432KC_TIM.h"
 #include "STM32L432KC_GPIO.h"
 

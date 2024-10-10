@@ -1,6 +1,8 @@
 // STM32L432KC_RCC.h
 // Header for RCC functions
-
+// E155 Lab4
+// Victoria Parizot
+// vparizot@g.hmc.edu
 #ifndef STM32L4_RCC_H
 #define STM32L4_RCC_H
 

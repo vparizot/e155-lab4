@@ -1,6 +1,8 @@
 // STM32L432KC_FLASH.h
 // Header for FLASH functions
-
+// E155 Lab4
+// Victoria Parizot
+// vparizot@g.hmc.edu
 #ifndef STM32L4_FLASH_H
 #define STM32L4_FLASH_H
 

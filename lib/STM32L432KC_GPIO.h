@@ -1,6 +1,8 @@
 // STM32L432KC_GPIO.h
 // Header for GPIO functions
-
+// E155 Lab4
+// Victoria Parizot
+// vparizot@g.hmc.edu
 #ifndef STM32L4_GPIO_H
 #define STM32L4_GPIO_H
 

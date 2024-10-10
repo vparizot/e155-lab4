@@ -1,6 +1,8 @@
 // STM32L432KC_RCC.c
 // Source code for RCC functions
-
+// E155 Lab4
+// Victoria Parizot
+// vparizot@g.hmc.edu
 #include "STM32L432KC_RCC.h"
 
 void configurePLL() {

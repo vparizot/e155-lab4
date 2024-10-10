@@ -21,10 +21,9 @@ Purpose : Generic application start
 *   Application entry point.
 */
 // main.c
-// GPIO blink LED with clock configuration
-// Josh Brake
-// jbrake@hmc.edu
-// 9/16/24
+// E155 Lab4
+// Victoria Parizot
+// vparizot@g.hmc.edu
 
 // Includes for libraries
 #include "lib/STM32L432KC_RCC.h"
