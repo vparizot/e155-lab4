@@ -33,7 +33,7 @@ Purpose : Generic application start
 
 // Define macros for constants
 #define SOUND_PIN           6
-#define DELAY_DURATION_MS    200
+#define DELAY_DURATION_MS    500
 
 
 // Function for dummy delay by executing nops
@@ -311,15 +311,15 @@ const int notes[][2] = {
 int main(void) {
 
     // Configure flash to add waitstates to avoid timing errors
-    configureFlash();
+    //configureFlash();
 
     // CONFIGURE CLOCKS IN RCC: (do we still have to Setup the PLL and switch clock source to the PLL)
-    configureClock();
+    //configureClock();
  
 /////////////////////////
     //clock source control
-    RCC->CFGR |= (1<<10); //bits 10:8 (PPRE1) where 0xx is HCLK not divided
-    RCC->CFGR |= (1<<7) ; // AHB Prescaler, (HPRE[3:0] = 0xxx)
+    //RCC->CFGR |= (1<<10); //bits 10:8 (PPRE1) where 0xx is HCLK not divided
+    //RCC->CFGR |= (1<<7) ; // AHB Prescaler, (HPRE[3:0] = 0xxx)
 
     //enable timer (pg 245)
     RCC->APB2ENR |= (1<<16); //enable timer 15
